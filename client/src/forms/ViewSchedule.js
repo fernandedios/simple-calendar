@@ -3,14 +3,21 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import * as actions from './FormActions';
+import { Button } from './common';
 
 class ViewSchedule extends Component {
     constructor (props) {
         super(props);
 
+        this.state = {
+            render: false
+        };
+
         this.widthArr = [];
         this.leftOffSet = [];
         this.collisions = [];
+
+        this.renderJson = this.renderJson.bind(this);
     }
     componentWillMount() {
         if(this.props.auth) {
@@ -130,6 +137,24 @@ class ViewSchedule extends Component {
         );
     }
 
+    renderJson() {
+        this.setState({ render: true });
+    }
+
+    renderJsonData() {
+        if (this.state.render) {
+            const filtered = this.props.tasks.tasks.map(({ start, duration, title }) => {
+                return { start, duration, title };
+            });
+
+            return (
+                <div className="form-group">
+                    <textarea readOnly className="w-100 form-control" id="exampleFormControlTextarea1" rows="10" value={JSON.stringify(filtered)} />
+                </div>
+            );
+        }
+    }
+
     render() {
         return (
             <div className="container forms-container">
@@ -159,6 +184,16 @@ class ViewSchedule extends Component {
                             </div>
                             {this.renderTasks()}
                         </div>
+                    </div>
+                </div>
+                <div className="row py-3">
+                    <div className="col-md-5 mx-auto">
+                        <Button onClick={this.renderJson} name="btn-export" label="Export to JSON" />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col mx-auto">
+                        {this.renderJsonData()}
                     </div>
                 </div>
             </div>

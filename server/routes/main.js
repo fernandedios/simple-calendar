@@ -129,6 +129,4 @@ router.route('/tasks/:id')
         }
     });
 
-    
-
 module.exports = router;
