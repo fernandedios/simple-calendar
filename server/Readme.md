@@ -25,6 +25,14 @@ module.exports = {
 }
 ```
 
+```js
+module.exports = {
+    port: 5050,
+    database: 'mysql://<user>:<password>@127.0.0.1/<test database>',
+    secretKey: your_secret_for_JWT_decoding
+}
+```
+
 Run Migration before starting the server:
 
 ```bash
