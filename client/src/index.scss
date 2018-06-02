@@ -1,0 +1,58 @@
+@import 'bootstrap/scss/bootstrap';
+
+.forms-container {
+    padding-top: 100px;
+}
+
+.times-container {
+    height:720px;
+    width: 900px;
+    display: inline-flex;
+  }
+
+.timings {
+    text-align: right;
+    padding-right: 10px;
+    width: 100px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    font-size: 0.5em;
+    box-sizing: border-box
+  }
+  
+  .timings span {
+    font-size: 200%;
+    color: #696969;
+  }
+  
+  .days {
+    height: 720px;
+    width: 620px;
+    padding: 0px 10px;
+    background-color: #f5f5f5;
+    border-color: #D1D1D1;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+  }
+  
+  .event {
+    background-color: #dee9f3;
+    border-style: solid;
+    border-width: 1px;
+    border-left-width: 5px;
+    border-color: #D1D1D1;
+    border-left-color: #85acd4;
+    padding-left: 10px;
+    padding-top: 5px;
+    position: absolute;
+    font-size: 0.5em;
+    box-sizing: border-box;
+  }
+  
+  .event .title {
+    font-size: 170%;
+  }
