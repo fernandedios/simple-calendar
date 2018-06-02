@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import * as actions from './FormActions';
 
@@ -106,20 +107,20 @@ class ViewSchedule extends Component {
             }
         }
 
-        const divs = tasks.map(({ title, start, duration }, id) => {
+        const divs = tasks.map(({ id, title, start, duration }, i) => {
             let end = start + duration;
             let height = ((end - start) / minutesinDay * containerHeight) + 'px';
-            let top = (start / minutesinDay * containerHeight) + 'px';
-            let units = this.widthArr[id];
+            let top = (start / minutesinDay * (containerHeight + 220)) + 'px';
+            let units = this.widthArr[i];
             if (!units) { units = 1 }
-            let left = (containerWidth / this.widthArr[id]) * (this.leftOffSet[id] - 1) + 10;
+            let left = (containerWidth / this.widthArr[i]) * (this.leftOffSet[i] - 1) + 10;
             if (!left || left < 0) { left = 10 }
             let width = (containerWidth/units) + 'px';
 
             return (
-                <div key={title} className="event" style={{ width, height, top, left: 115 + left + 'px' }}>
+                <Link to={`/edit/${id}`} key={title} className="event" style={{ width, height, top, left: 115 + left + 'px' }}>
                     <span className="title">{title}</span>
-                </div>
+                </Link>
             );
         });
         return (

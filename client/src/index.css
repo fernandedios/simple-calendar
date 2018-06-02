@@ -6327,7 +6327,8 @@ a.text-dark:hover, a.text-dark:focus {
   padding-top: 5px;
   position: absolute;
   font-size: 0.5em;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  cursor: pointer; }
 
 .event .title {
   font-size: 170%; }

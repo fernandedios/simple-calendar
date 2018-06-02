@@ -101,4 +101,34 @@ router.route('/tasks')
         }
     });
 
+router.route('/tasks/:id')
+    .put(checkToken, async (req, res, next) => {
+        const { start, duration, title } = req.body;
+        try {
+            const task = await Task.update({ start, duration, title }, { where: { id: req.params.id }});
+            res.json({
+                success: true,
+                message: 'Task successfully updated',
+                task
+            });
+        }
+        catch (err) {
+            next(err);
+        }
+    })
+    .delete(checkToken, async (req, res, next) => {
+        try {
+            await Task.destroy({ where: { id: req.params.id }});
+            res.json({
+                success: true,
+                message: 'Task successfully deleted'
+            });
+        }
+        catch (err) {
+            next(err);
+        }
+    });
+
+    
+
 module.exports = router;

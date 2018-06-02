@@ -6,6 +6,7 @@ import Login from '../forms/Login';
 import Signup from '../forms/Signup';
 import AddSchedule from '../forms/AddSchedule';
 import ViewSchedule from '../forms/ViewSchedule';
+import EditDeleteSchedule from '../forms/EditDeleteSchedule';
 import Logout from '../forms/Logout';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path="/" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/add" component={AddSchedule} />
+          <Route path="/edit/:id" component={EditDeleteSchedule} />
           <Route path="/view" component={ViewSchedule} />
           <Route path="/logout" component={Logout} />
         </Switch>
